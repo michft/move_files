@@ -25,24 +25,18 @@ for WK_DIR in a ; do
 
   for FILE in $SM_DIR/$WK_DIR/* 
   do
-    LG_FILE="$LG_DIR${FILE#$SM_DIR}"
-#    echo $LG_FILE tst
+    LG_MOVED="${FILE%.*}_large.${FILE##*.}"
 
-    if [ -a "$LG_FILE" ]
-    then 
-      LG_MOVE="${FILE%.*}_large.${FILE##*.}"
-#      echo " mv -i $LG_FILE $LG_MOVE" >> moves_to_make.txt
-        mv -i "$LG_FILE" "$LG_MOVE"
+    if [ -a "$LG_MOVED" ]
+    then
+# comparison html quotes could be swapped. eg echo '\<img src="
+        echo "$FILE <img src='$FILE'> <img src='$LG_FILE'> <br />" >> $SM_DIR/$WK_DIR.html
     else
-      echo "$LG_FILE not found" >> errors.txt
+       # Do Nothing
     fi
 
   done
 
-  for FILE in $LG_DIR/$WK_DIR/*
-  do
-    echo "$FILE has no corresponding small file" >> errors.txt
-  done
 
 done
 
