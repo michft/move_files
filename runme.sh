@@ -6,8 +6,14 @@
 
 set -e
 
-SM_DIR="/home/mich/src/move/sm"
-LG_DIR="/home/mich/src/move/lg"
+## Change to full path for preference. i
+## Also fix for loop below.
+## And do move rather than echo.
+
+#SM_DIR="/home/mich/src/move/sm"
+#LG_DIR="/home/mich/src/move/lg"
+SM_DIR="./sm"
+LG_DIR="./lg"
 
 # below is how to include spaces in filenames loop.
 SAVEIFS=$IFS
