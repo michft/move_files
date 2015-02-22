@@ -37,14 +37,17 @@ for WK_DIR in a ; do
     if [ -a "$LG_FILE" ]
     then 
       LG_MOVE="${FILE%.*}_large.${FILE##*.}"
-#      echo " mv -i $LG_FILE $LG_MOVE" >> moves_to_make.txt
-        mv -i "$LG_FILE" "$LG_MOVE"
+###
+      echo " mv -i $LG_FILE $LG_MOVE" >> moves_to_make.txt
+#      mv -i "$LG_FILE" "$LG_MOVE"
+###
     else
       echo "$LG_FILE not found" >> errors.txt
     fi
 
   done
 
+## Until echo and mv are changed above (###), all LG files stay put and will error.
   for FILE in $LG_DIR/$WK_DIR/*
   do
     echo "$FILE has no corresponding small file" >> errors.txt
