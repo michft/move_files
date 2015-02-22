@@ -20,23 +20,30 @@ echo -e "Runnings as user $(whoami)\n" >> ./errors.txt
 #for WK_DIR in q ; do
 for WK_DIR in a ; do
   #for FILE in "$(ls $SM_DIR/$WK_DIR)""$(find . -name $SM_DIR/$WK_DIR/*$FILE_TYPE)"; do
+
   for FILE in $SM_DIR/$WK_DIR/* 
   do
     LG_FILE="$LG_DIR${FILE#$SM_DIR}"
 #    echo $LG_FILE tst
+
     if [ -a "$LG_FILE" ]
     then 
       LG_MOVE="${FILE%.*}_large.${FILE##*.}"
 #      echo " mv -i $LG_FILE $LG_MOVE" >> moves_to_make.txt
-       mv -i "$LG_FILE" "$LG_MOVE"
+        mv -i "$LG_FILE" "$LG_MOVE"
+# comparison html, quotes could be swapped. echo '\<img src="
+        echo "\<img src='$FILE'\> \<img src='$LG_FILE'\> " >> $SM_DIR/$WK_DIR.html
     else
       echo "$LG_FILE not found" >> errors.txt
     fi
+
   done
+
   for FILE in $LG_DIR/$WK_DIR/*
   do
     echo "$FILE has no corresponding small file" >> errors.txt
   done
+
 done
 
 # restore $IFS
