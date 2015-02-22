@@ -8,6 +8,8 @@ set -e
 
 SM_DIR="/home/mich/src/move/sm"
 LG_DIR="/home/mich/src/move/lg"
+
+# below is how to include spaces in filenames loop.
 SAVEIFS=$IFS
 IFS=$(echo -en "\n\b")
 
@@ -46,7 +48,7 @@ for WK_DIR in a ; do
 
 done
 
-# restore $IFS
+# restore space to $IFS
 IFS=$SAVEIFS
 
 exit 0
