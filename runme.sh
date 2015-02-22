@@ -34,7 +34,7 @@ for WK_DIR in a ; do
 #      echo " mv -i $LG_FILE $LG_MOVE" >> moves_to_make.txt
         mv -i "$LG_FILE" "$LG_MOVE"
 # comparison html, quotes could be swapped. echo '\<img src="
-        echo "\<img src='$FILE'\> \<img src='$LG_FILE'\> " >> $SM_DIR/$WK_DIR.html
+        echo "$FILE <img src='$FILE'> <img src='$LG_FILE'> <br />" >> $SM_DIR/$WK_DIR.html
     else
       echo "$LG_FILE not found" >> errors.txt
     fi
